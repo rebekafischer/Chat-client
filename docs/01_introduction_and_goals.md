@@ -6,8 +6,6 @@ Dazu gehören:
 
 -   Aufziehen eines eigenen Projekts mit Dokumentation
 
--   inhaltlich und technisch tiefgründig 
-
 -   Möglichkeit mit mehreren im Raum gelichzeitig zu chatten
 
 -   innerhalb einer Location und eines Netzwerks kommunizieren 

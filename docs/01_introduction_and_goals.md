@@ -12,7 +12,7 @@ Dazu gehören:
 
 -   innerhalb einer Location und eines Netzwerks kommunizieren 
 
--   ein funktionierender Chatroom indem jeder kommunizieren kann, der vor Ort ist 
+-   ein funktionierender Chatroom in dem jeder kommunizieren kann, der vor Ort ist 
 
 ## Aufgabenstellung {#_aufgabenstellung}
 

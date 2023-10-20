@@ -1,18 +1,18 @@
 # Einführung und Ziele {#section-introduction-and-goals}
 
-Im Bereich IT Infrastruktur ist eine Hausarbeit zum Thema Technik und Kommunikation/Netzwerke gefordert. Hierbei soll ein Chat client entwickelt werden. 
+Im Bereich IT Infrastruktur ist eine Hausarbeit zum Thema Technik/Kommunikation/Netzwerke gefordert. Hierbei soll ein Chat Client entwickelt werden. 
 
 Dazu gehören:
 
--   zugrunde liegende Geschäftsziele,
+-   Aufziehen eines eigenen Projekts mit Dokumentation
 
--   wesentliche Aufgabenstellungen,
+-   inhaltlich und technisch tiefgründig 
 
--   wesentliche funktionale Anforderungen,
+-   Möglichkeit mit mehreren im Raum gelichzeitig zu chatten
 
--   Qualitätsziele für die Architektur und
+-   innerhalb einer Location und eines Netzwerks kommunizieren 
 
--   relevante Stakeholder und deren Erwartungshaltung.
+-   ein funktionierender Chatroom indem jeder kommunizieren kann, der vor Ort ist 
 
 ## Aufgabenstellung {#_aufgabenstellung}
 
@@ -20,18 +20,18 @@ Dazu gehören:
 **Inhalt**
 :::
 
-Kurzbeschreibung der fachlichen Aufgabenstellung, treibenden Kräfte,
-Extrakt (oder Abstract) der Anforderungen. Verweis auf (hoffentlich
-vorliegende) Anforderungsdokumente (mit Versionsbezeichnungen und
-Ablageorten).
+- Hausarbeit, 
+- 4000 Worte, 
+- fachliche Korrektheit,
+- freie Themenwahl
+- Inhalt zum Thema passend - Netzwerke, Kommunikation 
+
 
 ::: formalpara-title
 **Motivation**
 :::
 
-Aus Sicht der späteren Nutzung ist die Unterstützung einer fachlichen
-Aufgabe oder Verbesserung der Qualität der eigentliche Beweggrund, ein
-neues System zu schaffen oder ein bestehendes zu modifizieren.
+Zu sehen wie ein Projekt aufgezogen und dokumentiert wird. Ein funktionierendes Ergebnis am Ende zu haben und nicht immer alles in der Theorie lernen. Es ermöglicht die Kommunikation mit mehreren Personen im selben Chatroom um sich schnell über ein aktuelles Ereignis austauschen zu können.
 
 ::: formalpara-title
 **Form**
@@ -53,32 +53,27 @@ der online-Dokumentation (auf Englisch!).
 **Inhalt**
 :::
 
-Die Top-3 bis Top-5 der Qualitätsanforderungen für die Architektur,
-deren Erfüllung oder Einhaltung den maßgeblichen Stakeholdern besonders
-wichtig sind. Gemeint sind hier wirklich Qualitätsziele, die nicht
-unbedingt mit den Zielen des Projekts übereinstimmen. Beachten Sie den
-Unterschied.
+Es soll funktional, sicher, weiterentwickelbar, benutzerfreundlich, kompatibel sein.
 
-Hier ein Überblick möglicher Themen (basierend auf dem ISO 25010
-Standard):
+- Funktionalität: direkte Nachrichtenübertragung ohne Verzögerung
 
-![Kategorien von
-Qualitätsanforderungen](images/01_2_iso-25010-topics-DE.drawio.png)
+- Sicherheit: nur Leute im selben Netz sollen an dem Chat teilnehmen können
+
+- Benutzerfreundlichkeit: Einfache Bedienung des Chats, Nachrichten schreiben, Bilder schicken, optische Abgrenzungen der Komponenten
+
+- Kompatibilität: Mit allen Geräten im selben Netz kompatibel sein, unabhängig vom Gerätetyp
 
 ::: formalpara-title
 **Motivation**
 :::
 
-Weil Qualitätsziele grundlegende Architekturentscheidungen oft
-maßgeblich beeinflussen, sollten Sie die für Ihre Stakeholder relevanten
-Qualitätsziele kennen, möglichst konkret und operationalisierbar.
+Ein funktionierender Chatroom um zu sehen wie sowohl Code aufeinander aufbaut und zu einem Ergebnis führt, als auch ein fertiges Ergebnis zu haben welches benutzbar ist. 
 
 ::: formalpara-title
 **Form**
 :::
 
-Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten
-Szenarien, geordnet nach Prioritäten.
+Weißer Hintergrund auf denen die NAchrichten nacheinander angepinnt werden, siehe Signal/Whatsapp
 
 ## Stakeholder {#_stakeholder}
 

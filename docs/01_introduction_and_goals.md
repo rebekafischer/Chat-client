@@ -29,21 +29,13 @@ Dazu gehören:
 **Motivation**
 :::
 
-Zu sehen wie ein Projekt aufgezogen und dokumentiert wird. Ein funktionierendes Ergebnis am Ende zu haben und nicht immer alles in der Theorie lernen. Es ermöglicht die Kommunikation mit mehreren Personen im selben Chatroom um sich schnell über ein aktuelles Ereignis austauschen zu können.
+Übung empirischer Arbeit. Netzwerkprogrammierung mithilfe eines eigenen Projekts zu verstehen. Übung für die Bachelorarbeit. 
 
 ::: formalpara-title
 **Form**
 :::
 
-Kurze textuelle Beschreibung, eventuell in tabellarischer Use-Case Form.
-Sofern vorhanden, sollte die Aufgabenstellung Verweise auf die
-entsprechenden Anforderungsdokumente enthalten.
-
-Halten Sie diese Auszüge so knapp wie möglich und wägen Sie Lesbarkeit
-und Redundanzfreiheit gegeneinander ab.
-
-Siehe [Anforderungen und Ziele](https://docs.arc42.org/section-1/) in
-der online-Dokumentation (auf Englisch!).
+- Nachrichten schreiben innerhalb eines Chatrooms, mit jedem, der sich in den Chatroom eingeloggt hat über das selbe Netzwerk. 
 
 ## Qualitätsziele {#_qualit_tsziele}
 
@@ -51,27 +43,11 @@ der online-Dokumentation (auf Englisch!).
 **Inhalt**
 :::
 
-Es soll funktional, sicher, weiterentwickelbar, benutzerfreundlich, kompatibel sein.
+Es soll funktional, sicher, benutzerfreundlich, kompatibel sein.
 
 - Funktionalität: direkte Nachrichtenübertragung ohne Verzögerung
 
-- Sicherheit: nur Leute im selben Netz sollen an dem Chat teilnehmen können
-
 - Benutzerfreundlichkeit: Einfache Bedienung des Chats, Nachrichten schreiben, Bilder schicken, optische Abgrenzungen der Komponenten
-
-- Kompatibilität: Mit allen Geräten im selben Netz kompatibel sein, unabhängig vom Gerätetyp
-
-::: formalpara-title
-**Motivation**
-:::
-
-Ein funktionierender Chatroom um zu sehen wie sowohl Code aufeinander aufbaut und zu einem Ergebnis führt, als auch ein fertiges Ergebnis zu haben welches benutzbar ist. 
-
-::: formalpara-title
-**Form**
-:::
-
-Weißer Hintergrund auf denen die NAchrichten nacheinander angepinnt werden, siehe Signal/Whatsapp
 
 ## Stakeholder {#_stakeholder}
 
@@ -79,40 +55,6 @@ Weißer Hintergrund auf denen die NAchrichten nacheinander angepinnt werden, sie
 **Inhalt**
 :::
 
-Expliziter Überblick über die Stakeholder des Systems -- über alle
-Personen, Rollen oder Organisationen --, die
-
--   die Architektur kennen sollten oder
-
--   von der Architektur überzeugt werden müssen,
-
--   mit der Architektur oder dem Code arbeiten (z.B. Schnittstellen
-    nutzen),
-
--   die Dokumentation der Architektur für ihre eigene Arbeit benötigen,
-
--   Entscheidungen über das System und dessen Entwicklung treffen.
-
-::: formalpara-title
-**Motivation**
-:::
-
-Sie sollten die Projektbeteiligten und -betroffenen kennen, sonst
-erleben Sie später im Entwicklungsprozess Überraschungen. Diese
-Stakeholder bestimmen unter anderem Umfang und Detaillierungsgrad der
-von Ihnen zu leistenden Arbeit und Ergebnisse.
-
-::: formalpara-title
-**Form**
-:::
-
-Tabelle mit Rollen- oder Personennamen, sowie deren Erwartungshaltung
-bezüglich der Architektur und deren Dokumentation.
-
-+-----------------+-----------------+-----------------------------------+
-| Rolle           | Kontakt         | Erwartungshaltung                 |
-+=================+=================+===================================+
-| *\<Rolle-1>*    | *\<Kontakt-1>*  | *\<Erwartung-1>*                  |
-+-----------------+-----------------+-----------------------------------+
-| *\<Rolle-2>*    | *\<Kontakt-2>*  | *\<Erwartung-2>*                  |
-+-----------------+-----------------+-----------------------------------+
+- User, welcher momentan chatten will.
+- Professor, der die Dokumentationd des Projekts sehen will.
+- Developer, muss mit dem Code arbeiten.

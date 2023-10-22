@@ -58,3 +58,7 @@ Es soll funktional, sicher, benutzerfreundlich, kompatibel sein.
 - User, welcher momentan chatten will.
 - Professor, der die Dokumentationd des Projekts sehen will.
 - Developer, muss mit dem Code arbeiten.
+
+| Rolle | Kontaktdaten | Erwartung |
+| --- | --- | --- |
+| User | max@mustermann.de | Will chatten |

@@ -4,22 +4,22 @@
 **Inhalt**
 :::
 
-Kurzer Überblick über die grundlegenden Entscheidungen und
-Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
+Techniken und Methoden um den Chat Client zu bauen. 
 Hierzu gehören:
 
--   Technologieentscheidungen
+-   Sprache: Python
+-   Peer to Peer
 
--   Entscheidungen über die Top-Level-Zerlegung des Systems,
+-   *Entscheidungen über die Top-Level-Zerlegung des Systems,
     beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder
-    Architekturmuster,
+    Architekturmuster,*
 
--   Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
-    sowie
+-   *Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
+    sowie*
 
--   relevante organisatorische Entscheidungen, beispielsweise für
+-   *relevante organisatorische Entscheidungen, beispielsweise für
     bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben
-    an andere Stakeholder.
+    an andere Stakeholder.*
 
 ::: formalpara-title
 **Motivation**

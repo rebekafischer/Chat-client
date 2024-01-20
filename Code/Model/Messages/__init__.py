@@ -1,1 +1,1 @@
-from ConfigData import UserList
+from Model.ConfigData import UserList

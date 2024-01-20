@@ -1,6 +1,5 @@
 class ExitMessage:
 
-    import netifaces as ni
-    ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
-    print(ip)
-
+    def __init__(self, name, ip):
+        self.name: str = name #instance variable
+        self.ip: str = ip #instance variable 

@@ -1,5 +1,7 @@
-class ExitMessage:
+from pydantic import BaseModel
 
-    def __init__(self, name, ip):
-        self.name: str = name #instance variable
-        self.ip: str = ip #instance variable 
+class ExitMessage(BaseModel):
+    name : str
+    ip : str 
+
+  

@@ -1,0 +1,5 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.pythonPath": "/Users/rebeka/.local/share/virtualenvs/Code-Zjv_600Q/bin/python"
+}

@@ -1,7 +1,5 @@
 from ipaddress import IPv4Address
 import uvicorn
-
-#from Model.ConfigData import ConfigData
 from fastapi import FastAPI, APIRouter
 from pydantic import BaseModel
 from Model.ConfigData import ConfigData
@@ -33,16 +31,16 @@ class Receiver():
 # empfängt StartMessage
     def receive_start_message(self, sm: StartMessage) -> StartMessage:
         self.cd.user_list[sm.ip] = sm.name 
-        return sm 
+        return StartMessage(self.cd.name, self.cd.ip)
    
 
 # empfängt Nachrichten 
-    def receive_message(self, m: str) -> str:
+    def receive_message(self, m: Message) -> Message:
         print(m)
         return m
 
 # empfängt ExitMessage
-    def receive_exit_message(self, em: str) -> str:
+    def receive_exit_message(self, em: ExitMessage) -> ExitMessage:
         return em 
 
         

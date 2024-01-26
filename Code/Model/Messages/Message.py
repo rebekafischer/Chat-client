@@ -1,7 +1,8 @@
-class Message:
+from pydantic import BaseModel
 
-    def __init__(self, text: str) -> None:
-        self.message :str = text
+class Message(BaseModel):
+    message: str 
+
 
 
     

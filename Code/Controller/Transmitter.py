@@ -1,29 +1,27 @@
-import threading
+from ctypes import cdll
 from Model.ConfigData import ConfigData
-from Controller.Receiver import Receiver
 from Model.Messages.Message import Message
-from fastapi import FastAPI, APIRouter
-from pydantic import BaseModel
-import uvicorn
+import requests
 
 # Klasse Transmitter
 class Transmitter:
 
-    def __init__(self, participants: ConfigData) -> None:
-        self.api = FastAPI()
-        self.participants = participants 
-        self.api.add_api_route(path="/message", endpoint=self.send_message, methods=['POST'])
-        
+    def __init__(self, cd: ConfigData) -> None:
+        self.cd = cd
+    
+    
+# message  
+    def transmitter_start(self) -> None:
+        s: str = ""
+        while "exit" not in s:
+            s = input("Geben Sie eine Nachricht ein: ")
+            m: Message = Message(
+                message = s 
+            )
+            self.send_message(m)
 
-    # auf userliste zugereifen, getAllParticipants()
-    def get_all_participants(self):
-        return self.participants.user_list
-    
-    
-# message senden 
-    def send_message(self, m: Message) -> Message:
-        self.m = input("Enter your message")
-        return m
+    def send_message(self, m: Message) -> None:
+        for ip in self.cd.user_list.keys(): #ab hier send message 
+            participant = f"{ip.exploded}/message"
+            requests.post(participant, m.model_dump())
         
-    
-# auf input warten

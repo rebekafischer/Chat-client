@@ -1,6 +1,8 @@
 from ipaddress import IPv4Address
+from fastapi.encoders import jsonable_encoder
 import uvicorn
 from fastapi import FastAPI, APIRouter
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from Model.ConfigData import ConfigData
 from Model.Messages.StartMessage import StartMessage
@@ -22,7 +24,7 @@ class Receiver():
 
 
     def run_api(self):
-        uvicorn.run(self.api, host=self.cd.ip, port=8000) #startet die Api
+        uvicorn.run(self.api, host=self.cd.ip.exploded, port=8000) #startet die Api
         
     
 
@@ -31,16 +33,18 @@ class Receiver():
 # empfängt StartMessage
     def receive_start_message(self, sm: StartMessage) -> StartMessage:
         self.cd.user_list[sm.ip] = sm.name 
-        return StartMessage(self.cd.name, self.cd.ip)
+        return StartMessage(name=self.cd.name, ip=self.cd.ip)
    
 
 # empfängt Nachrichten 
-    def receive_message(self, m: Message) -> Message:
+    def receive_message(self, m: Message) -> None:
         print(m)
-        return m
+    
+    
 
 # empfängt ExitMessage
-    def receive_exit_message(self, em: ExitMessage) -> ExitMessage:
-        return em 
+    def receive_exit_message(self, em: ExitMessage) -> None:
+        self.cd.user_list.pop(em.ip)
+          
 
         

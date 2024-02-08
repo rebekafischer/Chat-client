@@ -8,6 +8,8 @@ class Transmitter:
 
     def __init__(self, cd: ConfigData) -> None:
         self.cd = cd
+        self.transmitter_start()
+        
     
     
 # message  

@@ -1,25 +1,26 @@
-import time
-import socket
-from network import MDNS 
-from Model.ConfigData import ConfigData
+from zeroconf import ServiceBrowser, ServiceListener, Zeroconf
 
 
-class DiscoveryService: 
-    # mdns broadcast 
-    def __init__(self) -> None: 
-        self.mdns = MDNS()
-    MDNS.set_name(hostname = ip, instance_name = "my_instance") #hostname und instance name setzen 
-    MDNS.add_service("_http", MDNS.PROTO_TCP, 80) #TCP service hinzufügen 
+class DiscoveryService(ServiceListener):
 
-    time.sleep(60) # um anderen devices zeit zu geben die services zu entdecken 
-    # mdns reply erhalten mit ip adresse
+    def update_service(self, zc: Zeroconf, type_: str, name: str) -> None:
+        print(f"Service {name} updated")
+
+    def remove_service(self, zc: Zeroconf, type_: str, name: str) -> None:
+        print(f"Service {name} removed")
+
+    def add_service(self, zc: Zeroconf, type_: str, name: str) -> None:
+        info = zc.get_service_info(type_, name)
+        print(f"Service {name} added, service info: {info}")
+
+
+zeroconf = Zeroconf()
+ds = DiscoveryService()
+browser = ServiceBrowser(zeroconf, "_http._tcp.local.", ds)
+try:
+    input("Press enter to exit...\n\n")
+finally:
+    zeroconf.close()
+    
         
-
-    # Start Nachricht mit name und ip adresse senden 
-    beginning = StartMessage() # neues Objekt
-    beginning.post("/start") # Objekt an start schicken
-
-
-    # Exit Nachricht senden 
-    end = ExitMessage() #neues Objekt
-    end.post("/exit") #an exit endpunkt schicken 
+ 

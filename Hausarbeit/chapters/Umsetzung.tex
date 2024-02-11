@@ -1,0 +1,26 @@
+\section{Umsetzung}
+was für komponenten braucht, etwas was auffinden ermöglicht, etwas was als server fungiert, jeder client ist server und client, wie finde ich server
+Erst erklären was ich machen: wie hab ich es gemacht. Hier auch diagramme einfügen 
+Der Chat client setzt sich im wesentlichen zusammen aus:
+\begin{itemize}
+    \item Receiver
+    \item Transmitter
+    \item DiscoveryService
+    \item ConfigData
+    \item Message types
+\end{itemize} 
+Beim Starten des Chat clients sucht der DiscoveryService mithilfe eines Multicasts nach anderen Benutzern.
+Alle Nachrichten werden über eine REST API an den richtigen Endpunkt geschickt. Es gibt drei verschiedene Endpunkte: Start, Message, Exit.
+Es wird eine Startmessage mit eigenem Namen und IP Adresse an die IP Adresse des gefundenen Teilnehmers geschickt.  
+Die IP Adresse wird in der Userliste der Configdata eingetragen.
+Der Receiver nimmt die Antwort auf die Startmessage entgegen. Diese enthält den Namen des gefundenen Teilnehmers, sodass er passend zur IP Adresse in der Userliste ergänzt werden kann.
+Jeder neue Teilnehmer tritt über den beschriebenen Startprozess dem Chatroom bei. 
+\\
+\\
+Der Transmitter ist für das Senden von Nachrichten zuständig. In der Userliste werden die IP Adressen der Teilnehmer nachgeschaut. 
+Die Nachricht wird an den Endpunkt Message und somit an jede einzelne IP Adresse der Liste geschickt. 
+\\
+\\
+Verlässt ein Teilnehmer den Chatroom, wird eine Exitmessage an den Endpunkt Exit geschickt. Die Exitmessage wird vom Receiver entgegen genommen. 
+Hierbei wird der Name und die IP Adresse gesendet um aus der Userliste gelöscht zu werden. 
+Es wird eine REST API für das Versenden von Nachrichten verwendet

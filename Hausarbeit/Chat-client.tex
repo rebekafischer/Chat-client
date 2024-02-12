@@ -1,8 +1,16 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[
+    12pt, 
+    a4paper, 
+    bibliography=totoc
+]{scrartcl}
 
 \title{\textbf{\huge{Chat Client}} \\ Entwicklung eines p2p Chat Clients auf Basis von klassischen Client-Server Protokollen}
 \author{\\Rebeka Fischer \\ \emph{3.Semester - IT Infrastruktur} \\ FOM Hochschule für Ökonomie und Management}
 \date{06.02.2024}
+
+\RequirePackage[ngerman]{babel}     % New german spell checking
+\RequirePackage{helvet}
+\usepackage{graphicx}
 
 \begin{document}
 \maketitle
@@ -11,9 +19,14 @@
 \setcounter{page}{1}
 \tableofcontents
 \newpage
-\include{chapters/Einleitung}
-\include{chapters/Grundlagen}
-\include{chapters/Umsetzung}
-\include{chapters/Ergebnisse}
-\include{chapters/Fazit}
+\listoffigures
+\newpage
+\input{chapters/Einleitung}
+\input{chapters/Grundlagen}
+\input{chapters/Umsetzung}
+\input{chapters/Ergebnisse}
+\input{chapters/Fazit}
+\newpage
+\bibliographystyle{alpha}
+\bibliography{literatur/literatur}
 \end{document}

@@ -1,5 +1,5 @@
 \section{Grundlagen}
-Für die Entwicklung eines Chat clients gibt es verschiedene Möglichkeiten zur technischen Umsetzung.
+Für die Entwicklung einer Chat-Anwendung gibt es verschiedene Möglichkeiten zur technischen Umsetzung.
 Häufig wird die Client-Server Architektur verwendet. 
 Der Computer wird als Client bezeichnet und fragt beim Server Daten und Informationen an. 
 Der Server ist ein leistungsstarker Computer, welcher Daten speichert und sie auf Anfrage zurück gibt.
@@ -7,14 +7,17 @@ Client und Server sind über das Netzwerk miteinander verbunden.
 Bei einem Chat client finden zwei Prozesse für die Kommunikation statt.
 Zuerst sendet der Client eine Nachricht über das Netzwerk an den Server und wartet auf eine Antwortnachricht. 
 Wenn der Server den request des Clients erhält, gibt er eine Antwort mit den geforderten Daten zurück. 
+\cite{tanenbaum96}
 \\
 \\
 Neben dem Client-Server Modell gibt es auch die peer-to-peer Kommunikation.
-Einzelne Computer treten direkt übers Netzwerk miteinander in Kontakt und können kommunizieren. 
-Jeder User hat local eine Liste mit allen anderen Teilnehmern und eine locale Datenbasis. 
-Kommt ein neuer User dazu, kann er einen beliebigen User anfragen und erhält die Namen der anderen Benutzer. 
+Einzelne Computer treten direkt übers Netzwerk miteinander in Kontakt und können kommunizieren.
+Dabei wird das Multicast routing verwendet. Es werden Pakete an User geschickt, die als Teil der vorgesehenen Gruppe identifiziert wurden.
+Im Vergeleich zum Broadcast werden beim Multicast nur Pakete an bestimmte User geschickt und nicht an alle existierenden Geräte im Netzwerk.
+Jeder User hat lokal eine angelegte Liste mit allen anderen Teilnehmern und eine lokale Datenbasis. 
+Kommt ein neuer User dazu, kann er einen beliebigen Teilnehmer anfragen und erhält die Namen der anderen Benutzer. 
 Somit ist jeder Computer ein peer, er kann als Client gegenüber anderen Geräten agieren, aber auch als Server.
 Durch das Einnehmen der Client- und Serverfunktion eines jeden Computers ist kein seperater Server notwendig.
 Es werden nur die einzelnen Endgeräte benötigt und eine Netzwerkverbindung.
-
+\cite{tanenbaum96}
 %was für übertragungsmodi, was unterschied p2p client server, wie machen kann, wie man was baut, an frage annähern  

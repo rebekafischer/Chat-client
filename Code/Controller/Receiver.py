@@ -1,7 +1,7 @@
 from ipaddress import IPv4Address
 from fastapi.encoders import jsonable_encoder
 import uvicorn
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, Request, APIRouter
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from Model.ConfigData import ConfigData
@@ -37,8 +37,9 @@ class Receiver():
    
 
 # empfängt Nachrichten 
-    def receive_message(self, m: Message) -> None:
-        print(m)
+    def receive_message(self, m: Message, request: Request) -> None:
+        ipv4 : IPv4Address = IPv4Address(request.client.host)
+        print(self.cd.user_list[ipv4]+ ': ' + m.message)
     
     
 

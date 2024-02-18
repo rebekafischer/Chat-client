@@ -1,6 +1,6 @@
 from ipaddress import IPv4Address
 from fastapi.encoders import jsonable_encoder
-import uvicorn
+from uvicorn import Server, Config
 from fastapi import FastAPI, Request, APIRouter
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -21,10 +21,19 @@ class Receiver():
         self.api.add_api_route(path="/start", endpoint=self.receive_start_message, methods=['POST'])
         self.api.add_api_route(path="/exit", endpoint=self.receive_exit_message, methods=['POST'])
         self.cd = cd 
+        self.server :Server = Server(
+            Config(self.api, self.cd.ip.exploded, access_log = False)
+        )
 
 
-    def run_api(self):
-        uvicorn.run(self.api, host=self.cd.ip.exploded, port=8000) #startet die Api
+    def start(self)-> None:
+        self.server.run()
+    
+    def stop(self)-> None:
+        self.server.should_exit = True 
+
+    # def run_api(self):
+    #     uvicorn.run(self.api, host=self.cd.ip.exploded, port=8000) #startet die Api
         
     
 

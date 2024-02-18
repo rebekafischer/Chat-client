@@ -22,7 +22,7 @@ class Transmitter:
                 message = s 
             )
             self.send_message(m)
-            s = input("Geben Sie eine Nachricht ein: ")
+            s = input("Geben Sie eine Nachricht ein: \n")
 
     def send_message(self, m: Message) -> None:
         for ip in self.cd.user_list.keys(): #ab hier send message 
@@ -33,5 +33,5 @@ class Transmitter:
     def send_exit_message(self) -> None:
         em: ExitMessage = ExitMessage(name= self.cd.name, ip= self.cd.ip)
         for ip in self.cd.user_list.keys():
-            participant = f"http://{ip.exploded}:8000/exit"
-            requests.post(participant, em.model_dump_json())
+            participant = f"http://{ip.exploded}:8000/exit" # exit könnte man verbessern, dauert lange je mehr teilnehmer da sind
+            requests.post(participant, em.model_dump_json(), timeout=5)

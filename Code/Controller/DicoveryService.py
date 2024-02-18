@@ -38,8 +38,6 @@ class DiscoveryService:
             server=socket.gethostname() + '.local.'
         )
 
-        self.search_participants()
-
         
         
 
@@ -50,7 +48,7 @@ class DiscoveryService:
     def search_participants(self):
         sl: MyListener = MyListener()
         browser = ServiceBrowser(self.zeroconf,[self.info.type], listener=sl)
-        sleep(5)
+        sleep(10)
         browser.cancel()
         browser.join()
 

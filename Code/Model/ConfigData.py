@@ -12,31 +12,3 @@ class ConfigData:
         self.name: str = name
         self.port: int = port 
         self.user_list: dict[IPv4Address, str] = {}
-
-    
-class SingeltonMeta(type):
-
-    _instances = {}
-
-    _lock: Lock = Lock() #synchronisiert Threads beim ersten Zugriff auf singelton 
-
-    def __call__(self, cls, *args, **kwargs):
-        with cls._lock:
-            if cls not in cls._instances:
-                instance= super().__call__(*args, **kwargs)
-                cls._instances[cls] = instance 
-        return cls._instances[cls]
-
-
-# class Singleton:
-#     instance = None
-
-#     @staticmethod
-#     def get_instance():
-#         if Singleton.instance is None:
-#             Singleton()
-#         return Singleton.instance
-    
-#     def __init__(self):
-#         if Singleton.instance is None:
-#             Singleton.instance = self 

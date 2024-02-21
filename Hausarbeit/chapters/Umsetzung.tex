@@ -4,8 +4,9 @@
 %Um einen funktionierenden Chatroom zu bauen, werden verschiedene Komponenten für unterschiedliche Aufgaben benötigt. 
 Die Applikation soll es ermöglichen, dass mehrere Nutzer im selben Netzwerk miteinander chatten können. 
 Dafür müssen zu Beginn andere Teilnehmer im Netzwerk gefunden werden.
-Da kein Server angefragt werden kann, um herauszufinden welche Teilnehmer es gibt, müssen sich die Geräte untereinander finden. Mithilfe eines Multicasts könnte ein neuer User 
-herausfinden, wer bereits im Chatroom und im Netzwerk vorhanden ist. 
+Da kein Server angefragt werden kann, um herauszufinden welche Teilnehmer es gibt, müssen sich die Geräte untereinander finden. 
+Somit muss jeder Client auch Server sein.
+Mithilfe eines Multicasts könnte ein neuer User herausfinden, wer bereits im Chatroom und im Netzwerk vorhanden ist. 
 Wurde ein Chatteilnehmer gefunden, muss sowohl die Adresse als auch der Name des jeweils anderen herausgefunden und gespeichert werden. 
 Mit einer angelegten Liste könnte die Speicherung der User vorgenommen werden. Somit weiß jeder Nutzer welche anderen Teilnehmer vorhanden sind. 
 
@@ -17,7 +18,7 @@ Damit jeder Teilnehemr die gesendete Nachricht erhält, muss sie an jede vorhand
 
 Möchte ein User den Chatroom verlassen, muss sichergestellt werden, dass dieser nach dem Austritt keine weiteren Nachrichten erhält. 
 Mit dem Verlassen des Chatrooms müssen die anderen Geräte informiert werden, dass diese Adresse nicht mehr vorhanden ist und keine weiteren Nachrichten zugestellt werden.
-Durch das Versenden einer speziellen Nachricht beim Verlassen mit den eigenen Daten kann der Teilnehmer aus der Liste der anderen User gelöscht werden. 
+Durch das Versenden einer speziellen Nachricht mit den eigenen Daten beim Verlassen des Chatrooms, kann der Teilnehmer aus der Liste der anderen User gelöscht werden. 
 Die Chat Applikation ist damit beendet. 
 \\
 \subsection{Ablauf}
@@ -69,26 +70,16 @@ In der ConfigData ist die Userliste mit IP Adresse und Name der User angelegt un
 Die Message types definieren die einzelnen Typen und den Aufbau der unterschiedlichen Messagearten. Diese unterteilen sich in StartMessage, Message und ExitMessage.
 Um Nachrichten zu versenden werden HTTP requests und eine REST API verwendet. 
 
-\subsection{Ausführung}
+\subsection{Lösungsstrategie}
 \subsubsection{Start}
 Mit dem Start der Applikation wird zuerst der Name des Benutzers mit einer Eingabe festgelegt. Danach wird der Receiver gestartet. Er sorgt dafür, dass sowohl Startmessages, normale Messages als auch Exitmessages empfangen werden können. Außerdem wird mit dem Receiverstart die API gestartet.
 Anschließend beginnt der DiscoveryService mit einem Multicast nach anderen Teilnehmern zu suchen. Es muss sichergestellt werden, dass in einem bestimmten, vorher definierten Netz gesucht wird,
 um sich mit anderen Teilnehmern im selben Netzwerk zu verbinden. Das Netzwerk wird mit dem Port, dem Servernamen und der IP Adresse festgelegt. Es wird definiert, wie lange nach anderen Usern im Netzwerk gesucht werden soll, bevor an die gefundenen
 Teilnehmer eine StartMessage rausgeht. Die gefundenen IP Adressen werden in eine Liste eingetragen. 
 Nach Ablauf der Zeit wird eine StartMessage an alle eingetragenen Adressen der Liste geschickt. Diese enthält den eigenen Namen und die IP Adresse. 
-Als Antwort auf die StartMessage wird ebenfalls eine Startmessage mit Name und IP Adresse des gefundenne Users zurückgegeben.
+Als Antwort auf die StartMessage wird ebenfalls eine Startmessage mit Name und IP Adresse des gefundenen Users zurückgegeben.
 Der Name wird passend zur IP Adresse ergänzt und die Liste in der ConfigData verwaltet. 
 Der DiscoveryService bleibt auch nach Beendigung der Suche weiterhin aktiv um auf eingehende Startmessages von weiteren Teilnehmern antworten zu können und diejenigen in der Userliste zu ergänzen.
-
-%Die MyListener Klasse sucht mit der Methode add\_service nach IP Adressen im Netzwerk. Mithilfe der Zeroconf library können die Adressen im angegebenen Netzwerk gefunden werden.
-%Hier beschränkt sich die Suche auf das Netzwerk \_airplay.\_tcp.local. Die gefundenen Adressen werden der Liste \_userlist hinzugefügt. 
-%Die Userliste befindet sich in der ConfigData. Die ConfigData besteht aus den eigenen Daten, IP Adresse und Name, und der Userliste. 
-%Der eigene Name wird beim Programmstart eingegeben. 
-%In der Liste befinden sich die gefundenen IP Adressen mit den dazugehörigen Namen.
-%Blabla greift auf userliste zu und trägt ein\dots
-%Nach der Teilnehmersuche schickt der DiscoverService an jede gefundene Adresse eine StartMessage. In der StartMessage befindet sich die eigene IP Adresse und der Name.
-%Um die eigene IP Adresse herauszufinden wird die netifaces library in der ConfigData verwendet und als IPv4Adresse gespeichert. 
-%Der DiscoveryService ruft die Userliste auf und sendet über HTTP an jede eingetragene Adresse eine Startmessage an den Endpunkt start.
 
 \subsubsection{Messages}
 Nach Abschluss der Initialisierung und dem Beitritt zum Chatroom können Nachrichten verschickt werden. Durch den Start des Transmitters wird durchgehend eine Nachrichteneingabe des Nutzers gefordert, 
@@ -96,18 +87,6 @@ bis das Wort \emph{exit} eingegeben wird.
 Die eingegebene Nachricht wird an alle anderen Teilnehemer gesendet. Dafür muss die Nachricht an jede einzelne IP Adresse, die in der Userliste vorhanden ist, geschickt werden.
 Eingehende Nachrichten werden vom Receiver empfangen und mit dem Namen des Senders auf die Konsole gedruckt. 
 
-%Nach Abschluss der Initialisierung und dem Beitritt zum Chatroom, sorgt der Transmitter für die Nachrichteneingabe. 
-%Es wird dauerhaft eine Eingabe vom User gefordert.
-%Der Transmitter geht die Userliste durch und sendet an jede Adresse die Nachricht an den Endpunkt message.
-%Das Beenden der Eingabe und der Austritt aus dem Chatroom findet erst statt, wenn "'exit"' eingeben wird.
-%Die while Schleife sorgt dafür, dass so lange eine Eingabe gefordert wird, bis "'exit"' eingegeben wird.  
-%Gleichzeitig werden Nachrichten empfangen. Im Receiver sind Methoden definiert um die Startmessage, Message und Exitmessage zu erhalten.
-%Mit dem Import von FastAPI kann das Abrufen und Senden an definierte Endpunkte stattfinden. 
-%Es werden in der \_\_init\_\_ Funktion des Receivers die Routen zu den jeweiligen Endpunkten start, message und exit mit den dazugehörigen Funktionen angegeben.
-%Die Methode receive\_start\_message fordert eine Nachricht vom Typ StartMessage und trägt die übergebenen Variablen innerhalb der Startmessage, name und ip, in die userliste der ConfigData ein.
-%Receive\_message fordert einen Parameter vom Typ Message und gibt diesen in der Konsole aus.
-%Um die Exitmessage zu empfangen gibt es die Methode receive\_exit\_message. Hier wird eine Nachricht vom Typ ExitMessage übergeben und die darin enthaltene IP Adresse wird aus der user\_list entfernt.
-%Neben dem Empfangen von Nachrichten startet der Receiver mit der Methode run\_api die API. Dabei werden Host und Port übergeben, wobei der Host die eigene IP Adresse ist.
 \subsubsection{Exit}
 Um das Programm zu beenden gibt der User in die Konsole \emph{exit} ein. Dadurch wird die andauernde Forderung einer Nachrichteneingabe beendet.
 Der DiscoveryService stoppt das Advertisement, damit man für andere User nicht mehr zu finden ist. Nachfolgend sendet der Transmitter eine Exitmessage 

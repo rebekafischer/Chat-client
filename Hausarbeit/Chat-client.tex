@@ -1,27 +1,77 @@
 \documentclass[
-    12pt, 
-    a4paper, 
-    bibliography=totoc
+    a4paper
+    DIV=12, 
+    bibliography=totoc,
+    listof=totoc
 ]{scrartcl}
 
-\title{\textbf{\huge{Chat Client}} \\ Entwicklung eines p2p Chat Clients auf Basis von klassischen Client-Server Protokollen}
-\author{\\Rebeka Fischer \\ \emph{3.Semester - IT Infrastruktur} \\ FOM Hochschule für Ökonomie und Management}
+\RequirePackage{amsmath}            % Math
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{graphicx}           % Include graphics to document
+\RequirePackage[ngerman]{babel}     % New german spell checking
+\RequirePackage[T1]{fontenc}        % Font
+\RequirePackage[hyphens]{url}       % Line break support in URL
+\RequirePackage[absolute]{textpos}  % place at absolute coordinates on title page
+\RequirePackage[utf8]{inputenc}         % Universal encoding
+\RequirePackage{helvet}
+
+\title{\textbf{\huge{Chat Client}}}
+\subtitle{\Large{Entwicklung eines p2p Chat Clients auf Basis von klassischen Client-Server Protokollen}}
+\author{Rebeka Fischer \\ 3.Semester  IT Infrastruktur \\ FOM Hochschule für Ökonomie und Management}
 \date{06.02.2024}
 
-\RequirePackage[ngerman]{babel}     % New german spell checking
-\RequirePackage{helvet}
-\usepackage{graphicx}
-
 \begin{document}
-\maketitle
+\makeatletter
+%\maketitle{}
 \thispagestyle{empty}
-%\begin{titlepage}
+\begin{titlepage}{
 
-%\begin{textblock*}{textwidth}{134mm, 40mm}
-%    \begin{minipage} [b] [0cm] [b] {\textwidth}
-%        \includegraphics[scale=0.5]{}
-%    \end{minipage}
-%\end{textblock*}
+    \begin{center}
+        \includegraphics[scale=1]{Images/FOM-Logo.jpg}
+
+        \vspace{10mm}
+        \textbf{\huge{FOM University of Applied Sciences for Economics \& Management}}
+    \end{center}
+
+
+    % \begin{textblock*}{\paperwidth}{57mm, 72mm}
+    %     \begin{center}
+    %         \vspace{2mm}
+    %         Berufsbegleitender Studiengang in Wirtschaftsinformatik
+    %         \\
+    %         3.Semester
+    %     \end{center}
+    % \end{textblock*}   
+        
+    \begin{textblock*}{\paperwidth} (0mm, 98mm)  % x has offset of 2 mm
+        %\begin{minipage}[b][0cm][b]{\textwidth}
+        % kind of doc here
+        %\fontsize{10pt}{10pt}
+        %\fontfamily{opensans}
+        %\selectfont
+        \begin{center}
+            % author of doc
+            Berufsbegleitender Studiengang in Wirtschaftsinformatik \\
+            3.Semester \\
+            \vspace{10mm}
+            \textbf{Seminararbeit} \\
+            in IT Infrastruktur \\
+            \vspace{10mm}
+            \@title \\
+            \vspace{2mm}
+            \@subtitle \\
+            \vspace{10mm}
+            \fontsize{15pt}{15pt}\selectfont
+            \@author
+        \end{center}
+        %\end{minipage}
+    \end{textblock*}
+
+        
+    
+}\end{titlepage}
+\
 
 \newpage
 \setcounter{page}{1}
@@ -36,6 +86,7 @@
 \input{chapters/Ergebnisse}
 \input{chapters/Fazit}
 \newpage
+
 \bibliographystyle{alpha}
 \bibliography{literatur/literatur}
 \end{document}

@@ -1,4 +1,4 @@
-from Controller.DicoveryService import DiscoveryService
+from Controller.DiscoveryService import DiscoveryService
 from Controller.Transmitter import Transmitter
 from Controller.Receiver import Receiver
 from threading import Thread

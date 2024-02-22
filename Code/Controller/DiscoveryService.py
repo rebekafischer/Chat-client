@@ -63,7 +63,7 @@ class DiscoveryService:
             res: Response = requests.post(participant, sm.model_dump_json())
             temp: StartMessage = StartMessage.model_validate_json(res.content)
 
-            self.cd.user_list[temp.ip] = temp.name
+            self.cd.user_list[temp.ip] = temp.name #wird in die Userliste der ConfigData eingetrage 
         
     
 

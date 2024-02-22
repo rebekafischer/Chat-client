@@ -34,10 +34,7 @@ class Receiver():
 
     # def run_api(self):
     #     uvicorn.run(self.api, host=self.cd.ip.exploded, port=8000) #startet die Api
-        
-    
 
-        
 
 # empfängt StartMessage
     def receive_start_message(self, sm: StartMessage) -> StartMessage:

@@ -1,6 +1,5 @@
 \documentclass[
-    a4paper
-    DIV=12, 
+    12pt,
     bibliography=totoc,
     listof=totoc
 ]{scrartcl}
@@ -15,23 +14,35 @@
 \RequirePackage[absolute]{textpos}  % place at absolute coordinates on title page
 \RequirePackage[utf8]{inputenc}         % Universal encoding
 \RequirePackage{helvet}
+\RequirePackage{setspace}
+\RequirePackage[numbers]{natbib}
+\RequirePackage{fancyhdr}
 
-\title{\textbf{\huge{Chat Client}}}
-\subtitle{\Large{Entwicklung eines p2p Chat Clients auf Basis von klassischen Client-Server Protokollen}}
-\author{Rebeka Fischer \\ 3.Semester  IT Infrastruktur \\ FOM Hochschule für Ökonomie und Management}
+\usepackage[paper=a4paper, top=40mm, bottom=20mm, left=40mm, right=20mm]{geometry}
+
+\title{Chat Client}
+\subtitle{Entwicklung eines p2p Chat Clients auf Basis von klassischen Client-Server Protokollen}
+\author{Rebeka Fischer \\}
 \date{06.02.2024}
 
+\pagestyle{fancy}
+\chead{\thepage}
+\cfoot{}
+\lhead{}
+\rhead{}
 \begin{document}
+\onehalfspace
 \makeatletter
 %\maketitle{}
 \thispagestyle{empty}
 \begin{titlepage}{
 
     \begin{center}
-        \includegraphics[scale=1]{Images/FOM-Logo.jpg}
+        \includegraphics[width=2.3cm]{Images/fomLogo.pdf}
 
         \vspace{10mm}
-        \textbf{\huge{FOM University of Applied Sciences for Economics \& Management}}
+        \fontsize{20pt}{20pt}\selectfont
+        \textbf{FOM Hochschule für Ökonomie \& Management}\\
     \end{center}
 
 
@@ -44,49 +55,75 @@
     %     \end{center}
     % \end{textblock*}   
         
-    \begin{textblock*}{\paperwidth} (0mm, 98mm)  % x has offset of 2 mm
-        %\begin{minipage}[b][0cm][b]{\textwidth}
+    %\begin{textblock*}{\paperwidth} (0mm, 98mm)  % x has offset of 2 mm
+        %\begin{minipage}[t][0cm][b]{\textwidth}
         % kind of doc here
         %\fontsize{10pt}{10pt}
         %\fontfamily{opensans}
         %\selectfont
         \begin{center}
             % author of doc
-            Berufsbegleitender Studiengang in Wirtschaftsinformatik \\
+            \normalsize{Berufsbegleitender Studiengang in Wirtschaftsinformatik} \\
             3.Semester \\
             \vspace{10mm}
-            \textbf{Seminararbeit} \\
+            \large{\textbf{Seminararbeit}}\\
             in IT Infrastruktur \\
-            \vspace{10mm}
-            \@title \\
+            \vspace{15mm}
+            \fontsize{20pt}{20pt}\selectfont
+            \textbf{\@title} \\
             \vspace{2mm}
+            \fontsize{15pt}{15pt}\selectfont
             \@subtitle \\
-            \vspace{10mm}
+            \vspace{15mm}
             \fontsize{15pt}{15pt}\selectfont
             \@author
+            \vspace{30mm}
         \end{center}
+        % \begin{flushleft}
+        %     Dozent: Christian Frank \\
+        %     \vspace{5mm}
+        %     Matrikelnummer: 674516\\
+        %     \vspace{5mm}
+        %     Abgabedatum: 24.02.2024\\
+        % \end{flushleft}
         %\end{minipage}
-    \end{textblock*}
+    %\end{textblock*}
 
+
+
+
+    %\begin{minipage}[b][14.5cm][b]{\textwidth}
         
-    
+        \begin{flushleft}
+            \fontsize{12pt}{12pt}
+            \fontfamily{opensans}
+            \selectfont
+            Dozent: Christian Frank \\
+             \vspace{5mm}
+             Matrikelnummer: 674516\\
+             \vspace{5mm}
+             Abgabedatum: 24.02.2024\\
+        \end{flushleft}
+    %\end{minipage}
+ 
 }\end{titlepage}
-\
 
 \newpage
-\setcounter{page}{1}
+\pagenumbering{Roman}
+\setcounter{page}{2}
 \tableofcontents
 \newpage
 \listoffigures
 \newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \input{chapters/Einleitung}
 \input{chapters/Grundlagen}
-\newpage
 \input{chapters/Umsetzung}
 \input{chapters/Ergebnisse}
 \input{chapters/Fazit}
 \newpage
 
-\bibliographystyle{alpha}
+\bibliographystyle{IEEEtranN}
 \bibliography{literatur/literatur}
 \end{document}

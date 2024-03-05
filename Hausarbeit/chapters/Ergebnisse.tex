@@ -1,9 +1,18 @@
 \section{Ergebnisse}
-Alle Anforderugen wurden erfolgreich umgesetzt. 
-Somit ist es möglich eine peer to peer Chat-Anwendung zu bauen mit client-server Technologie.
-Mit dem Programmstart gibt der User seinen Nutzernamen ein und die API wird gestartet. 
-Das Programm sucht automatisch nach anderen Nutzern im Netzwerk, ohne einen externen Server anfragen zu müssen.
-Nach dem Start können problemlos Nachrichten an die verschiedenen Teilnehmer geschickt werden, da durch die Speicherung der vorhandenen User die Nachrichten an jeden User direkt verschickt werden.
-Dadurch entsteht problemlos ein Chatroom, in dem jeder Benutzer Nachrichten empfangen und verschicken kann. 
-Angezeigt wird sowohl der Name der Person, die die Nachricht verschickt hat, als auch dahinter die Nachricht selbst. 
-Mit der Exiteingabe wird das Programm beendet. Der Nutzer wird automatisch bei den anderen Teilnehmern abgemeldet, indem die Adresse gelöscht und das Programm beendet wird.
+Im Rahmen dieser Arbeit wurde ein peer to peer Chat client mit client-server Technologie erstellt, wobei alle Anforderungen erfolgreich umgesetzt wurden.
+Nach der theoretischen Ausarbeitung der Funktionsweise der Chatapplikation wurde eine konkrete Umsetzung in Python geschrieben um zu testen,
+ob eine praktische Anwendung möglich ist.
+Hierbei wurden im vorhinein die technischen Voraussetzungen festgelegt und im Anschluss umgesetzt. 
+Die Funktion der Service Discovery wurde mithilfe von mDNS gelöst. Es werden zu Beginn andere Teilnehmer gefunden, wobei ebenfalls sichergestellt wurde, 
+dass auch nach der eigenen, aktiven Suche nach Teilnehmern, der eigene Service weiterhin für 
+andere zu finden und erreichen ist. 
+Durch den Einsatz einer REST API und HTTP Requests ist es gelungen eine direkte Verbindung zu den gefundenen Clients aufzubauen und festzulegen, dass als Antwort auf einen neuen Service ebenfalls die eigenen Informationen 
+gesendet werden. Im Anschluss werden mittels \emph{POST}-Requests auch Nachrichten ausgetauscht und können auf der Konsole ausgegeben werden. 
+Da jeder Computer in der Lage ist sowohl als Client als auch als Server zu agieren wurde eine Gleichberechtigung innerhalb des Netzwerks erzeugt und jeder Prozess von jedem Node ausgeführt.
+Die anfängliche bestehende Problematik des Austritts eines Teilnehmers wurde mittels einer Exitmessage behoben. 
+Es wurde sichergestellt, dass der Client aus der Userliste der anderen Teilnehmer entfernt wurde und keine weiteren Nachrichten mehr erhält. 
+Dies ermöglicht eine reibungslose Kommunikation und Interaktion innerhalb des Chatrooms. 
+Somit wurde bewiesen, dass es möglich ist, eine Peer-to-Peer Chat-Anwendung mit client-server Technologie zu bauen.
+% http für peer to peer anwendungen, mehr auf die ziele eingehen die anfangs gesetzt wurden 
+% hat funktioniert mit http, habe gleichberechtigung im netzewrk hergestellt, funktionale naforderungen an chat app, die chatt app zusammengebaut mit rest api, wie finden clients ausgelagert habe mit mdns, 
+% introduction retrospektiv aufgreifen 

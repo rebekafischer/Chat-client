@@ -1,47 +1,47 @@
 \section{Grundlagen}
+\subsection{Client-Server-Architektur}
 Für die Entwicklung einer Chat-Anwendung gibt es verschiedene Möglichkeiten zur technischen Umsetzung.
 Eine weit verbreitete Methode ist die Verwendung der Client-Server Architektur. Diese ist für Netzwerkanwendungen das am häufigsten genutze Architekturmodell. 
 Das Modell unterteilt die verwendeten Systeme in zwei Kategorien, Server und Clients.
-Der Server ist dafür zuständig Daten zu verarbeiten, zu speichern und sie auf Anfrage zurückzugeben. Server werden üblicherweise auf spezieller, leistungststarker Hardware ausgeführt.  
+Der Server ist dafür zuständig, Daten zu verarbeiten, zu speichern und sie auf Anfrage zurückzugeben. Server werden üblicherweise auf spezieller und leistungststarker Hardware ausgeführt.  
 Ein Computer führt den Client aus und fragt Daten beim Server an\cite{client-server_2019}. 
-Für die Datenabfrage sendet der Client einen request an den Server und wartet auf eine Antowrt.
-Es handelt sich hierbei um ein request-reply Verhalten.
+Für die Datenabfrage sendet der Client einen Request an den Server und wartet auf eine Antowrt.
+Es handelt sich hierbei um ein Request-reply Verhalten.
 Die Kommunikation zwischen Client und Server basiert auf einem Protokoll. 
 Internet application Protokolle bauen für gewöhnllich auf TCP oder IP Verbidnungen auf\cite[S. 79ff]{steen23}. 
 Fragt ein Client nach einem Service, wird erst eine Verbidnung zu dem Server hergestellt. Anschließend wird eine Anfrage rausgeschickt.
-Stellt ein Client eine Anfrage an den Server, wird eine Nachricht erstellt. Die Nachricht gibt den gewünschten Service an und die dafür nötigen Daten als Input, falls welche benötigt werden.
+Stellt ein Client eine Anfrage an den Server, wird eine Nachricht erstellt. Die Nachricht gibt den gewünschten Service an und die für den Service nötigen Daten als Input, falls welche benötigt werden.
 Der Server wartet kontinuierlich auf einen eingehenden Request. Der Request wird verarbeitet und der Server schickt eine Antwort auf die Anfrage des Clients raus\cite{tan10}.
 Dieser Prozess des Anfragens und Antwortens bildet die Grundlage für die Kommunikation in der Client-Server-Architektur.
 Bei der Implementierung wird einfachheitshalber auf dem Computer mit dem Client nur das User-interface level implementiert.
 Auf der Server Seite werden die übrigen Sachen, Prozess- und Daten-Level, implementiert.
 Durch diese Art der Organisation wird alles vom Server verarbeitet, wohingegen der Cliet nur ein Terminal ist, mit einem graphischen Interface.
-Die Aufteilung in diesem Modell in einen vorhandenen Client und einen Server, wird als two-tired-architecture bezeichnet\cite[S. 80]{steen23}.
-\\
-\\
-Im Gegensatz zum Client-Server-Modell steht das Peer-to-Peer-Modell, bei dem einzelne Computer direkt über das Netzwerk miteinander kommunizieren können.
+Die Aufteilung in diesem Modell, in einen vorhandenen Client und einen Server, wird als two-tired-architecture bezeichnet\cite[S. 80]{steen23}.
+\subsection{Peer to Peer Architektur}
+Im Gegensatz zum Client-Server-Modell steht das peer to peer Modell, bei dem einzelne Computer direkt über das Netzwerk miteinander kommunizieren können.
 Bei diesem Modell müssen die Funktionen von jedem Peer bereitgestellt werde. Alle Peers sind im System gleichwertig.
-Innerhalb des Peer-to-Peer Modells wird unterschieden zwischen strukturierten Peer-to-Peer Modellen und unstrukturierten Peer-to-Peer Modellen.
-Ein struktureiertes Peer-to-Peer Modell ist auf eine bestimmte Art und Weise angeordnet, als Ring, binary tree, oder als Grid. Mithilfe dieser Anordnung können Daten effizient abgerufen werden.
-Bei einem unstrukturierten Peer-to-Peer Modell führt jeder Client eine eigene Liste mit momentanen Usern\cite[S. 92]{steen23}
-Die einzelne Computer treten direkt über das Netzwerk miteinander in Kontakt und können kommunizieren.
-Dafür müssen verschiedene Kompoenten und Funktionen, die für ein Programm benötigt werden, auf jedem Gerät bereitgestellt werden.
+Innerhalb des peer to peer Modells wird unterschieden zwischen strukturierten peer to peer Modellen und unstrukturierten peer to peer Modellen.
+Ein struktureiertes peer to peer Modell ist auf eine bestimmte Art und Weise angeordnet, als Ring, binary tree, oder als Grid. Mithilfe dieser Anordnung können Daten effizient abgerufen werden.
+Bei einem unstrukturierten peer to peer Modell führt jeder Client eine eigene Liste mit momentanen Usern\cite[S. 92]{steen23}.
+Die einzelnen Computer treten direkt über das Netzwerk miteinander in Kontakt und können kommunizieren.
+Dafür müssen verschiedene Komponenten und Funktionen, die für ein Programm benötigt werden, auf jedem Gerät bereitgestellt werden.
 Jeder Node hat eine Liste mit anderen momentan vorhandenen Teilnehmern.
 Es werden Pakete an Nodes geschickt, die als Teil der vorgesehenen Gruppe identifiziert wurden. 
-Wenn ein weiterer Nutzer hinzukommt, addressiert er bereits vorhandenen Nodes, um die Liste mit vorhandene Nutzern zu füllen.
-Daher agiert jeder Computer in einem peer-to-peer System sowohl als Client als auch als Server.
-Durch das Einnehmen der Client- und Serverfunktion eines jeden Computers ist kein seperater Server notwendig.
-Es werden nur die einzelnen Endgeräte benötigt und eine Netzwerkverbindung\cite{tan10}.
-Die Liste mit Nodes kann sich kontinuierlich ändern durch das Verlassen oder Beitreten von Usern, was eine gewisse Problematik hervorbringt.
-Um Daten abzurufen kann keine bestimmte Route verwendet werden, wenn die Teilnehemr in der Liste sich dauerhaft ändern.
-Die Suche nach Daten kann einerseits an alle Clients geschickt werden. Hat ein CLient die Anfrage bereits bekommen, wird sie ignoriert.
-Kommt die Anfrage neu rein, sucht der Client nach den angeforderten Daten. Entweder die gefundenen Daten werden direkt an den nachfragenden Client geschickt, oder die Daten gehen an den Client zurück, der das Problem weitergeleitet hat.
+Wenn ein weiterer Nutzer hinzukommt, adressiert er bereits vorhandenen Nodes, um die Liste mit vorhandenen Nutzern zu füllen.
+Daher agiert jeder Computer in einem peer to peer System sowohl als Client als auch als Server.
+Durch das Einnehmen der Client- und Serverfunktion eines jeden Computers, ist kein seperater Server notwendig.
+Es werden nur die einzelnen Endgeräte benötigt und eine Netzwerkverbindung\cite[S. 748f]{tan10}.
+Die Liste mit Nodes kann sich kontinuierlich ändern, durch das Verlassen oder Beitreten von Usern, was eine gewisse Problematik hervorbringt.
+Um Daten abzurufen, kann keine bestimmte Route verwendet werden, wenn die Teilnehmer in der Liste sich dauerhaft ändern.
+Die Suche nach Daten kann an alle Clients geschickt werden. Hat ein Client die Anfrage bereits bekommen, wird sie ignoriert.
+Kommt die Anfrage neu rein, sucht der Client nach den angeforderten Daten. Entweder, die gefundenen Daten werden direkt an den nachfragenden Client geschickt, oder die Daten gehen an den Client zurück, der das Problem weitergeleitet hat.
 Dieser würde die Daten dann wiederrum an den vorherigen Node weiterleiten. 
 Sind die geforderten Daten nicht vorhanden, sendet der Node die Anfrage an alle seine vorhandenen Clients in der Liste.
 Dieser Prozess kann sehr lange dauern, bis tatsächlich die richtigen Daten gefunden und zum Client zurückgegeben wurden.
-Man spricht hierbei von flooding\cite[S. 93]{steen23}.
+Man spricht hierbei von \emph{flooding}\cite[S. 93]{steen23}.
 \\
 Ein weiteres Problem bei der Datenabfrage tritt auf, wenn ein Client Daten bei einem zufällig ausgewählten Node aus seiner Liste anfragt.
-Hat dieser die Daten nicht, leitet er die Anfrage an einen zufällig ausgewählten Node seiner Liste. Dieser Prozess kann sehr zeitintensiv sein, bis die gewünschten Daten gefunden sind.
-Dieses Phänomen wird als random walk Bezeichnet und stellt ebenfalls ein Problem bei der Peer-to-Peer Architektur dar.
+Hat dieser die Daten nicht vorhanden, leitet er die Anfrage an einen zufällig ausgewählten Node seiner Liste weiter. Dieser Prozess kann sehr zeitintensiv sein, bis die gewünschten Daten gefunden sind.
+Dieses Phänomen wird als \emph{random walk} Bezeichnet und stellt ebenfalls ein Problem bei der Peer-to-Peer Architektur dar\cite[S. 93]{steen23}.
 
 %was für übertragungsmodi, was unterschied p2p client server, wie machen kann, wie man was baut, an frage annähern  

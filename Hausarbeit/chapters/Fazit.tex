@@ -1,15 +1,18 @@
 \section{Fazit}
-Im Rahmen dieser Arbeit wurde ein peer-to-peer Chat client mit client-server Technologie erstellt. 
-Nach der theoretischen Ausarbeitung der Funktionsweise der Chatapplikation wurde eine konkrete Umsetzung in Python geschrieben um zu testen,
-ob eine praktische Anwendung möglich ist.
 Das Programm stellt die Grundfunktionen einer Chatapplikation dar, kann jedoch noch erweitert werden. 
-Momentan liegt der Fokus auf dem Austausch von Nachrichten, es könnte ergänzt werden durch Funktionen wie Bilder oder Emojis versenden. Zudem werden
-die Nachrichten nicht gespeichert, mit Verlassen des Chats wird auch der Chatverlauf gelöscht und kann nicht bei erneutem Beitritt wiederhergestellt werden.
+Momentan liegt der Fokus auf dem Austausch von Nachrichten, es könnte ergänzt werden durch Funktionen wie das Versenden von Bildern oder Emojis. Des Weiteren können derzeit keine UTF Zeichen versendet werden.
+Je größer die Teilnehmermenge des Chatrooms wird, desto unübersichtlicher wird der Chatverlauf und es besteht derzeit keine 
+Funktion private Chats zu öffnen, sowie einen Verlauf zu speichern. 
+Zudem werden die Nachrichten nicht gespeichert, mit Verlassen des Chats wird auch der Chatverlauf gelöscht und kann nicht bei erneutem Beitritt wiederhergestellt werden.
 Des Weiteren könnte man den Exitprozess verbessern. Die Dauer des Austretens aus dem Chatroom erhöht sich, je mehr Teilnehmer vorhanden sind.
-Der Ablauf könnte verbessert werden, damit bei einer hohen Tielnhemerzahl das Verlassen und Abmelden schneller ausgeführt wird.
-\\
-Für eine temporäre Kommunikation innerhalb des selben Netzwerks ist die peer-to-peer Methode für einen Chatroom geeignet, allerdings ist von einem 
-öffentlichen Gebrauch abzuraten. Je größer die Teilnehmermenge des Chatrooms wird, desto unübersichtlicher wird der Chatverlauf und es besteht derzeit keine 
-Funktion private Chats zu öffnen, sowie einen Verlauf zu speichern.
-Zusätzlich dürfte kaum Bedarf in Firmen oder im privaten Leben bestehen, einen einzigen großen Chatroom zu haben, der nur den reinen Nachrichtenaustausch ermöglicht.
-Dennoch eignet sich die Anwendung für eine kleine Gruppe, wie beispielsweise Studenten in einer Bibliothek oder einem Hörsaal, um sich schnell über ein Thema auszutauschen.
+Der Ablauf könnte verbessert werden, damit bei einer hohen Tielnhemerzahl das Verlassen und Abmelden schneller ausgeführt wird. 
+Diese Problematik zeigt sich ebenfalls beim Versenden von Nachrichten. 
+Zum derzeitigen Stand werden die gesendeten Nachrichten auf die Konsole gedruckt. Für eine optische Verbesserung könnte ein grafischen user interface implementiert werden um die Nachrichten geordneter anzuzeigen.
+Diese Implementierung würde die Benutzerfreundlichkeit verbessern. 
+Momentan wird das Programm und die Services durch eine Exiteingabe beendet, sollte jedoch das Programm ohne die Eingabe beendet werden, zum Beispiel durch einen Verbindungsabbruch oder das zuklappen des Laptops,
+werden die Prozesse nicht beendet und der User ist weiterhin in den Listen der anderen Clients vorhanden. Es würden weiterhin Nachrichten an den Client gesendet werden, die allerdings nicht mehr zugestellt werden können.
+Nach einer gewissen Zeit würde der Versuch die Nachricht an den Client erneut zu schicken und zuzustellen beendet werden, doch solange versucht wird die Nachricht zuzustellen, können keine weiteren Nachrichten 
+unter den anderen Clients ausgetauscht werden. Eine Lösung für dieses Problem könnte die Umstellung des Versands von Nachrichten auf asynchrone Kommunikation sein, damit andere Clients nicht warten müssen, bis eine Antwort eingeht.
+Zudem wäre es sinnvoll durchgehend zu wissen, ob die Liste mit den Usern noch aktuell ist und alle Clients noch erreichbar sind, damit nicht ein wie eben beschriebenes Problem, einen Client nicht zu erreichen, auftritt.
+Das Versenden von Heartbeats im Hintergrund wäre eine Option um in einem festgelegten Takt nachzufragen, welche Services noch aktiv und erreichbar sind. 
+Kommt keine Reaktion zurück, kann der Client den User aus seiner Liste entfernen um keine Ressourcen zu verschwenden und nicht über einen langen Zeitraum auf Antwort warten zu müssen.

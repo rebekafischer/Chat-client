@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-
-""" Example of browsing for a service.
-
-The default is HTTP and HAP; use --find to search for all available services in the network
-"""
-
 from time import sleep
 from Model.Messages.StartMessage import StartMessage
 from Model.ConfigData import ConfigData
@@ -63,7 +56,7 @@ class DiscoveryService:
             res: Response = requests.post(participant, sm.model_dump_json())
             temp: StartMessage = StartMessage.model_validate_json(res.content)
 
-            self.cd.user_list[temp.ip] = temp.name #wird in die Userliste der ConfigData eingetrage 
+            self.cd.user_list[temp.ip] = temp.name 
         
     
 

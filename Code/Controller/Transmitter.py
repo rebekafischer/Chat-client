@@ -5,7 +5,7 @@ from Model.Messages.Message import Message
 from Model.Messages.ExitMessage import ExitMessage
 import requests
 
-# Klasse Transmitter
+
 class Transmitter:
 
     def __init__(self, cd: ConfigData) -> None:

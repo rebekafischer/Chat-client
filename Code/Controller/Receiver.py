@@ -11,8 +11,6 @@ from Model.Messages.ExitMessage import ExitMessage
 
 
 
-
-# Klasse Receiver
 class Receiver():
 
     def __init__(self, cd: ConfigData) -> None:
@@ -31,9 +29,6 @@ class Receiver():
     
     def stop(self)-> None:
         self.server.should_exit = True 
-
-    # def run_api(self):
-    #     uvicorn.run(self.api, host=self.cd.ip.exploded, port=8000) #startet die Api
 
 
 # empfängt StartMessage
